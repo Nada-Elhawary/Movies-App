@@ -1,0 +1,28 @@
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.custom-pagination .page-link {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border: none;
+  margin: 0 5px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.custom-pagination .page-link:hover {
+  background-color: red;
+  color: white;
+}
+
+.custom-pagination .active .page-link {
+  background-color: red;
+  color: white;
+}
+
+.custom-pagination .page-link:focus {
+  box-shadow: none;
+}

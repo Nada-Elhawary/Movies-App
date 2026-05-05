@@ -1,0 +1,32 @@
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+
+}
+
+footer div {
+    margin-top: 10px;
+}
+
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: 0.3s;
+    font-size: 20px;
+}
+
+footer p {
+    font-size: 20px;
+}
+
+
+footer a:hover {
+    /* color: #00bcd4; */
+    color: rgb(211, 12, 12);
+}
