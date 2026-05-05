@@ -59,14 +59,14 @@
   justify-content: center;
   gap: 8px;
   border: 1px solid rgba(239, 35, 60, 0.4);
-  color: #fff;
-  background: rgba(239, 35, 60, 0.16);
+  color: #b1a9a963 !important;
+  background: rgba(239, 35, 60, 0.16) !important;
   font-weight: 800;
 }
 
 .remove-favorite-btn:hover {
-  color: #fff;
-  background: linear-gradient(135deg, var(--danger), var(--danger-dark));
+  color: #fff !important;
+  background: linear-gradient(135deg, var(--danger), var(--danger-dark)) !important;
 }
 
 .empty-watchlist {

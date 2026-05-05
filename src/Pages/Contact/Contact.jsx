@@ -76,44 +76,6 @@ export default function Contact() {
                         {errors.email?.message}
                     </p>
 
-
-                    {/* Password */}
-
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        className="cinema-input"
-                        {...register("password", {
-                            required: "Password required",
-                            minLength: {
-                                value: 8,
-                                message: "Minimum 8 characters"
-                            }
-                        })}
-                    />
-
-                    <p className="error-text">
-                        {errors.password?.message}
-                    </p>
-
-
-                    {/* Confirm Password */}
-
-                    <input
-                        type="password"
-                        placeholder="Confirm Password"
-                        className="cinema-input"
-                        {...register("confirmPassword", {
-                            required: "Confirm password required",
-                            validate: (value) => value === password || "Passwords must match"
-                        })}
-                    />
-
-                    <p className="error-text">
-                        {errors.confirmPassword?.message}
-                    </p>
-
-
                     {/* Subject */}
 
                     <select
