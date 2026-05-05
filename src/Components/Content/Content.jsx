@@ -69,13 +69,21 @@ const Content = () => {
   //   );
 
   return (
-    <div className="bg-dark min-vh-100 py-5">
-      <h1 className="mb-4 display-4 fw-bold text-danger text-center">Trending Movies</h1>
+    <div className="movies-page page-section">
+      <div className="container movies-hero text-center">
+        <p className="section-eyebrow mb-2">Now streaming</p>
+        <h1 className="mb-3 display-4 fw-bold gradient-title">
+          Trending <span>Movies</span>
+        </h1>
+        <p className="movies-subtitle mx-auto">
+          Browse today's most watched titles, save your favorites, and jump into the trailer when a poster catches your eye.
+        </p>
+      </div>
 
       {/* Search Section */}
-      <div className="row container-fluid justify-content-center mb-5">
-        <div className="col-md-6">
-          <div className="input-group shadow-lg">
+      <div className="container search-area mb-5">
+        <div className="search-shell mx-auto">
+          <div className="input-group">
             <input
               type="text"
               className="form-control search-input"
@@ -95,7 +103,7 @@ const Content = () => {
         </div>
       </div>
 
-      <div className="container d-flex flex-wrap justify-content-center gap-4">
+      <div className="container movies-grid">
         {movies.map(movie => (
           <MovieCard
             key={movie.id}

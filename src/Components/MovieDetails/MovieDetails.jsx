@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addFavorite, removeFavorite } from "../../Store/slices/favoriteSlice";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import TrailerModal from "../TrailerModal/TrailerModal";
+import "./MovieDetails.css";
 import "../TrailerModal/trailer.css";
 
 const MovieDetails = () => {
@@ -97,7 +98,7 @@ const MovieDetails = () => {
 
   return (
     <div
-      className="text-white"
+      className="movie-details-page text-white"
       style={{
         backgroundImage: `url(${BACKDROP_PATH}${movie?.backdrop_path})`,
         backgroundSize: 'cover',
@@ -106,48 +107,47 @@ const MovieDetails = () => {
         position: 'relative'
       }}
     >
-      <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-75"></div>
+      <div className="details-overlay position-absolute top-0 start-0 w-100 h-100"></div>
 
       <div className="container position-relative py-5">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="row align-items-center"
+          className="row align-items-center details-content"
         >
 
           <div className="col-md-4 d-flex justify-content-center mb-4 mb-md-0">
             <motion.img
               src={`${IMG_PATH}${movie.poster_path}`}
               alt="movie poster"
-              className="img-fluid rounded shadow-lg"
+              className="details-poster img-fluid shadow-lg"
               whileHover={{ scale: 1.05 }}
             />
           </div>
 
-          <div className="col-md-8">
+          <div className="col-md-8 details-copy">
+            <p className="section-eyebrow mb-2">Movie details</p>
             <h1 className="display-4 fw-bold">{movie.title}</h1>
-            <div className="mb-3 text-light">
-              <span className="me-3"><Calendar size={18} /> {movie.release_date}</span>
-              <span className="me-3"><Clock size={18} /> {movie.runtime} min</span>
-              <span className="text-warning"><Star size={18} /> {movie.vote_average.toFixed(1)}</span>
+            <div className="movie-meta mb-3">
+              <span><Calendar size={18} /> {movie.release_date}</span>
+              <span><Clock size={18} /> {movie.runtime} min</span>
+              <span className="rating-chip"><Star size={18} /> {movie.vote_average.toFixed(1)}</span>
             </div>
 
-            <div className="mb-3">
+            <div className="genre-list mb-3">
               {movie.genres.map(g => (
-                <span key={g.id} className="badge bg-secondary me-2 mb-2">{g.name}</span>
+                <span key={g.id} className="genre-badge">{g.name}</span>
               ))}
             </div>
 
-            <div className="card bg-dark bg-opacity-75 text-white mb-3">
-              <div className="card-body">
+            <div className="overview-panel mb-4">
                 {movie.overview}
-              </div>
             </div>
 
-            <div className="d-flex gap-3">
+            <div className="details-actions d-flex gap-3">
               <button
-                className="btn btn-danger btn-lg d-flex align-items-center gap-2"
+                className="btn trailer-action btn-lg d-flex align-items-center gap-2"
                 onClick={() => {
                   if (trailerKey) {
                     setShowTrailer(true);
@@ -163,7 +163,7 @@ const MovieDetails = () => {
                 whileTap={{ scale: 0.9 }}
                 whileHover={{ scale: 1.05 }}
                 onClick={handleFavoriteToggle}
-                className={`btn btn-lg d-flex align-items-center gap-2 px-4 fw-semibold ${isFavorite ? "btn-danger" : "btn-outline-light"
+                className={`btn btn-lg d-flex text-white align-items-center gap-2 px-4 fw-semibold watchlist-action ${isFavorite ? "is-active" : ""
                   }`}
               >
                 <Heart size={20} fill={isFavorite ? "white" : "none"} />

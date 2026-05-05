@@ -25,13 +25,6 @@ const TrailerModal = ({ trailerKey, onClose }) => {
             <i className="fa-solid fa-xmark"></i>
         </button>
 
-        {/* Sound Toggle */}
-        <button
-          className="sound-btn"
-          onClick={() => setMute(!mute)}
-        >
-          {mute ? <VolumeX /> : <Volume2 />}
-        </button>
 
         {/* Skeleton */}
         {loading && (

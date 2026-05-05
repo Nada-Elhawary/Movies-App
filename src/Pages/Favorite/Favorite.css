@@ -1,0 +1,85 @@
+.favorites-page {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.18));
+}
+
+.favorites-header h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.average-rating {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid rgba(248, 197, 71, 0.28);
+  border-radius: 999px;
+  color: var(--gold);
+  background: rgba(248, 197, 71, 0.1);
+  font-weight: 800;
+}
+
+.favorite-card {
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.38);
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.favorite-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(248, 197, 71, 0.42);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.48);
+}
+
+.favorite-card img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.favorite-card-body {
+  padding: 16px;
+}
+
+.favorite-card-body h6 {
+  min-height: 42px;
+  margin-bottom: 16px;
+  color: #fff;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.remove-favorite-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(239, 35, 60, 0.4);
+  color: #fff;
+  background: rgba(239, 35, 60, 0.16);
+  font-weight: 800;
+}
+
+.remove-favorite-btn:hover {
+  color: #fff;
+  background: linear-gradient(135deg, var(--danger), var(--danger-dark));
+}
+
+.empty-watchlist {
+  width: min(520px, calc(100% - 32px));
+  padding: 42px 28px;
+}
+
+.empty-watchlist h2 {
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.empty-watchlist p:last-child {
+  margin: 0;
+  color: var(--muted);
+}

@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
+import "./Header.css";
 
 export default function Navbar() {
 
@@ -8,31 +10,35 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="navbar navbar-dark bg-dark px-4">
+    <nav className="navbar navbar-expand navbar-dark app-navbar px-3 px-md-5">
 
-      <Link className="navbar-brand text-danger fw-bold" to="/">
-        MovieApp
+      <Link className="navbar-brand d-flex align-items-center" to="/">
+        <img
+          src={logo}
+          alt="logo"
+          className="brand-logo"
+        />
       </Link>
 
-      <div className="d-flex gap-4">
+      <div className="nav-links d-flex align-items-center gap-2 gap-md-3 ms-auto">
 
-        <Link className="nav-link text-white" to="/">
+        <Link className="nav-link" to="/">
           Home
         </Link>
 
         <Link
-          className="nav-link text-white position-relative"
+          className="nav-link position-relative"
           to="/favorite"
         >
           Favorite
 
-          <span className="badge bg-danger ms-1">
+          <span className="favorite-badge ms-1">
             {favorites.length}
           </span>
 
         </Link>
 
-        <Link className="nav-link text-white" to="/contact">
+        <Link className="nav-link" to="/contact">
           Contact
         </Link>
 

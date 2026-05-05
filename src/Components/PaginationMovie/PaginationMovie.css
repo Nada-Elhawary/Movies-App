@@ -1,26 +1,43 @@
 .pagination-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 44px;
+}
+
+.custom-pagination {
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
 }
 
 .custom-pagination .page-link {
-  background-color: #1e293b;
-  color: #e2e8f0;
-  border: none;
-  margin: 0 5px;
-  border-radius: 8px;
-  transition: 0.3s;
+  min-width: 48px;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  color: var(--text);
+  background: rgba(8, 8, 10, 0.74);
+  font-weight: 800;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .custom-pagination .page-link:hover {
-  background-color: red;
-  color: white;
+  color: #fff;
+  border-color: rgba(248, 197, 71, 0.38);
+  background: rgba(248, 197, 71, 0.14);
+  transform: translateY(-1px);
 }
 
 .custom-pagination .active .page-link {
-  background-color: red;
-  color: white;
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--danger), var(--orange));
+  box-shadow: 0 10px 24px rgba(239, 35, 60, 0.28);
 }
 
 .custom-pagination .page-link:focus {

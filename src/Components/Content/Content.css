@@ -1,35 +1,96 @@
-.form-control::placeholder {
-  color: rgba(255,255,255,0.6);
+.movies-page {
+  background:
+    linear-gradient(180deg, rgba(9, 9, 11, 0.2), rgba(9, 9, 11, 0.88)),
+    transparent;
+}
+
+.movies-hero {
+  max-width: 860px;
+  margin-bottom: 32px;
+}
+
+.movies-subtitle {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.search-area {
+  display: flex;
+  justify-content: center;
+}
+
+.search-shell {
+  width: min(720px, 100%);
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
 }
 
 .search-input {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: white;
-  backdrop-filter: blur(6px);
-  transition: 0.3s ease;
+  min-height: 54px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(3, 3, 4, 0.64);
+  color: var(--text);
+  padding-inline: 18px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
-.search-input::placeholder {
-  color: rgba(255,255,255,0.6);
+.search-input::placeholder,
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.48);
 }
 
 .search-input:focus {
-  background: rgba(255,255,255,0.08);
-  border-color: #ffc107;
-  box-shadow: 0 0 10px rgba(255,193,7,0.6);
-  color: white;
+  border-color: rgba(248, 197, 71, 0.72);
+  background: rgba(8, 8, 10, 0.92);
+  box-shadow: 0 0 0 4px rgba(248, 197, 71, 0.14);
+  color: var(--text);
 }
 
 .search-btn {
-  background: linear-gradient(45deg,#ff512f,#f09819);
+  min-width: 118px;
   border: none;
   color: white;
-  font-weight: 600;
-  transition: 0.3s;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--danger), var(--orange));
+  box-shadow: 0 14px 30px rgba(239, 35, 60, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .search-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(255,120,0,0.7);
+  color: #fff;
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 18px 38px rgba(239, 35, 60, 0.38);
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+@media (max-width: 576px) {
+  .movies-subtitle {
+    font-size: 0.98rem;
+  }
+
+  .search-shell {
+    padding: 6px;
+  }
+
+  .search-btn {
+    min-width: 96px;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 18px;
+  }
 }
