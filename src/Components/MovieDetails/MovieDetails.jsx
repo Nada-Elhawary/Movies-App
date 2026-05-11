@@ -9,6 +9,8 @@ import { addFavorite, removeFavorite } from "../../Store/slices/favoriteSlice";
 import TrailerModal from "../TrailerModal/TrailerModal";
 import "./MovieDetails.css";
 import "../TrailerModal/trailer.css";
+import WatchProvidersModal from "../WatchProvidersModal/WatchProvidersModal";
+import "../WatchProvidersModal/WatchProviders.css";
 
 const MovieDetails = () => {
 
@@ -19,6 +21,9 @@ const MovieDetails = () => {
 
   const [trailerKey, setTrailerKey] = useState(null);
   const [showTrailer, setShowTrailer] = useState(false);
+
+  const [providersLink, setProvidersLink] = useState("");
+  const [showProviders, setShowProviders] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -56,6 +61,50 @@ const MovieDetails = () => {
   useEffect(() => {
     fetchData();
     fetchTrailer();
+  }, [id]);
+
+  function fetchProviders() {
+
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2M0OTU3Y2E1NWFkODEyMzU1YTFkZmMzNjU5YzIzOCIsIm5iZiI6MTc3NDc4NjEwNC42OCwic3ViIjoiNjljOTE2Mzg5NmI2ZTEwYmViOTMzOTdkIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.KgFTklB0eCvXqQ9n5PIMcwzUWMurVQZ8cp-Z1Ne31bQ'
+      }
+    };
+
+    fetch(`https://api.themoviedb.org/3/movie/${id}/watch/providers`, options)
+      .then(res => res.json())
+      .then(data => {
+
+        if (!data.results) {
+          setProvidersLink("");
+          return;
+        }
+
+        const results = data.results;
+
+        // 🔥 اختار أفضل دولة
+        const country =
+          results.EG ||
+          results.US ||
+          Object.values(results)[0];
+
+        if (!country) {
+          setProvidersLink("");
+          return;
+        }
+
+        setProvidersLink(country.link);
+
+      })
+      .catch(err => console.error(err));
+  }
+
+  useEffect(() => {
+    fetchData();
+    fetchTrailer();
+    fetchProviders();
   }, [id]);
 
   function fetchData() {
@@ -142,7 +191,7 @@ const MovieDetails = () => {
             </div>
 
             <div className="overview-panel mb-4">
-                {movie.overview}
+              {movie.overview}
             </div>
 
             <div className="details-actions d-flex gap-3">
@@ -158,6 +207,27 @@ const MovieDetails = () => {
               >
                 <PlayCircle /> Watch Trailer
               </button>
+
+              <button
+                className="btn trailer-action btn-lg d-flex align-items-center gap-2"
+                onClick={() => {
+                  if (providersLink) {
+                    window.open(providersLink, "_blank");
+                  } else {
+                    alert("No streaming providers available");
+                  }
+                }}
+              >
+                <PlayCircle /> Watch Now
+              </button>
+
+              {/* <button
+                className="btn btn-success btn-lg d-flex align-items-center gap-2"
+                disabled={!providersLink}
+                onClick={() => window.open(providersLink, "_blank")}
+              >
+                🎬 Watch Now
+              </button> */}
 
               <motion.button
                 whileTap={{ scale: 0.9 }}
@@ -184,6 +254,13 @@ const MovieDetails = () => {
           />
         )
       }
+
+      {showProviders && (
+        <WatchProvidersModal
+          providers={providers}
+          onClose={() => setShowProviders(false)}
+        />
+      )}
     </div >
 
   )

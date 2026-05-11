@@ -42,4 +42,7 @@
 
 .custom-pagination .page-link:focus {
   box-shadow: none;
+  color: #c7370a;
+  outline: 3px solid rgba(248, 197, 71, 0.42);
+  outline-offset: 3px;
 }

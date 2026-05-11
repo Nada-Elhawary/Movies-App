@@ -103,6 +103,7 @@
   background: rgba(248, 197, 71, 0.12);
 }
 
+
 @media (max-width: 768px) {
   .details-content {
     min-height: auto;
